@@ -1,0 +1,577 @@
+/* HomeDetails.css - Enhanced Styles */
+
+.home-details {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  min-height: 100vh;
+  position: relative;
+}
+
+.home-details::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #4B0082, #FFD700, #4B0082);
+  z-index: 1;
+}
+
+.home-details h2 {
+  color: #4B0082;
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin-bottom: 25px;
+  text-align: center;
+  text-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.home-details h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, #FFD700, #4B0082);
+  border-radius: 2px;
+}
+
+.home-details img {
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+  margin-bottom: 30px;
+  border: 4px solid white;
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+.home-details img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 16px 50px rgba(0,0,0,0.3);
+}
+
+/* Property Details Grid */
+.home-details > p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #374151;
+  margin-bottom: 12px;
+  padding: 12px 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  border-left: 4px solid #4B0082;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.home-details > p::before {
+  content: "✨";
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.home-details > p:hover {
+  transform: translateX(10px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.home-details > p:hover::before {
+  opacity: 1;
+  left: 10px;
+}
+
+/* Price Highlight */
+.home-details p:nth-last-child(4),
+.home-details p:nth-last-child(5) {
+  background: linear-gradient(135deg, #4B0082, #6A0DAD);
+  color: white;
+  font-weight: 700;
+  font-size: 1.3rem;
+  border-left: 4px solid #FFD700;
+}
+
+.home-details p:nth-last-child(4)::before,
+.home-details p:nth-last-child(5)::before {
+  content: "💰";
+}
+
+/* Seller Info Cards */
+.home-details p:nth-last-child(2),
+.home-details p:nth-last-child(1) {
+  background: linear-gradient(135deg, #FFD700, #FFED4E);
+  color: #1f2937;
+  font-weight: 600;
+  border-left: 4px solid #4B0082;
+}
+
+.book-btn {
+  background: linear-gradient(135deg, #4B0082, #6A0DAD);
+  color: white;
+  padding: 18px 40px;
+  border: none;
+  border-radius: 15px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 8px 25px rgba(75, 0, 130, 0.4);
+  margin: 25px 0;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+
+.book-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.book-btn:hover::before {
+  left: 100%;
+}
+
+.book-btn:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 12px 35px rgba(75, 0, 130, 0.6);
+  background: linear-gradient(135deg, #5A1A9C, #7B2CBF);
+}
+
+.status-message {
+  font-size: 1.3rem;
+  font-weight: 700;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+  margin: 25px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.text-red-600 {
+  color: #dc2626;
+  background: linear-gradient(135deg, #fef2f2, #fee2e2);
+  border: 3px solid #fecaca;
+  box-shadow: 0 6px 20px rgba(220, 38, 38, 0.2);
+}
+
+.text-orange-600 {
+  color: #ea580c;
+  background: linear-gradient(135deg, #fff7ed, #ffedd5);
+  border: 3px solid #fed7aa;
+  box-shadow: 0 6px 20px rgba(234, 88, 12, 0.2);
+}
+
+/* Map buttons enhanced */
+.home-details > div {
+  margin: 30px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+.home-details > div button {
+  padding: 15px 25px;
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1.1rem;
+  transition: all 0.4s ease;
+  box-shadow: 0 6px 20px rgba(46, 204, 113, 0.4);
+  flex: 1;
+  min-width: 140px;
+  position: relative;
+  overflow: hidden;
+}
+
+.home-details > div button::after {
+  content: '📍';
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.8;
+}
+
+.home-details > div button:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 10px 30px rgba(46, 204, 113, 0.6);
+  background: linear-gradient(135deg, #27ae60, #219653);
+}
+
+/* Email form enhanced */
+.home-details form {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+  margin: 25px 0;
+  border: 2px solid #e5e7eb;
+  position: relative;
+}
+
+.home-details form::before {
+  content: '✉️';
+  position: absolute;
+  top: -15px;
+  left: 30px;
+  background: white;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 1.2rem;
+  border: 2px solid #e5e7eb;
+}
+
+.home-details textarea {
+  width: 100%;
+  padding: 20px;
+  border: 2px solid #e5e7eb;
+  border-radius: 15px;
+  font-size: 1.1rem;
+  font-family: inherit;
+  resize: vertical;
+  transition: all 0.3s ease;
+  margin-bottom: 20px;
+  background: #f8fafc;
+}
+
+.home-details textarea:focus {
+  outline: none;
+  border-color: #4B0082;
+  box-shadow: 0 0 0 4px rgba(75, 0, 130, 0.1);
+  background: white;
+  transform: translateY(-2px);
+}
+
+.home-details form button[type="submit"] {
+  background: linear-gradient(135deg, #0984e3, #0769b2);
+  color: white;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 6px 20px rgba(9, 132, 227, 0.4);
+  font-size: 1.1rem;
+}
+
+.home-details form button[type="submit"]:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 30px rgba(9, 132, 227, 0.6);
+  background: linear-gradient(135deg, #0769b2, #065a9c);
+}
+
+.home-details form button[type="button"] {
+  background: linear-gradient(135deg, #6b7280, #4b5563);
+  color: white;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  margin-left: 15px;
+}
+
+.home-details form button[type="button"]:hover {
+  background: linear-gradient(135deg, #4b5563, #374151);
+  transform: translateY(-3px);
+}
+
+/* Message Seller button enhanced */
+.home-details > button {
+  background: linear-gradient(135deg, #0984e3, #0769b2);
+  color: white;
+  padding: 16px 32px;
+  border: none;
+  border-radius: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 6px 20px rgba(9, 132, 227, 0.4);
+  font-size: 1.2rem;
+  margin: 20px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.home-details > button::before {
+  content: '💬';
+  margin-right: 10px;
+}
+
+.home-details > button:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 10px 30px rgba(9, 132, 227, 0.6);
+  background: linear-gradient(135deg, #0769b2, #065a9c);
+}
+
+hr {
+  border: none;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #4B0082, #FFD700, #4B0082, transparent);
+  margin: 40px 0;
+  border-radius: 2px;
+}
+
+/* Comment section enhanced */
+.home-details h3 {
+  color: #4B0082;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin: 35px 0 20px 0;
+  text-align: center;
+  position: relative;
+}
+
+.home-details h3::before,
+.home-details h3::after {
+  content: '⭐';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+}
+
+.home-details h3::before { left: 0; }
+.home-details h3::after { right: 0; }
+
+.comment-form {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+  margin-bottom: 40px;
+  border: 2px solid #e5e7eb;
+  position: relative;
+}
+
+.comment-form::before {
+  content: '💭';
+  position: absolute;
+  top: -15px;
+  left: 30px;
+  background: white;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 1.2rem;
+  border: 2px solid #e5e7eb;
+}
+
+.comment-form label {
+  display: block;
+  margin: 20px 0;
+  font-weight: 700;
+  color: #374151;
+  font-size: 1.2rem;
+}
+
+.comment-form select {
+  padding: 10px 15px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  margin-left: 15px;
+  transition: all 0.3s ease;
+  background: #f8fafc;
+}
+
+.comment-form select:focus {
+  outline: none;
+  border-color: #4B0082;
+  box-shadow: 0 0 0 3px rgba(75, 0, 130, 0.1);
+  background: white;
+}
+
+.comment-submit-btn {
+  background: linear-gradient(135deg, #4B0082, #6A0DAD);
+  color: white;
+  padding: 16px 32px;
+  border: none;
+  border-radius: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 6px 20px rgba(75, 0, 130, 0.4);
+  font-size: 1.2rem;
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.comment-submit-btn:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 30px rgba(75, 0, 130, 0.6);
+  background: linear-gradient(135deg, #5A1A9C, #7B2CBF);
+}
+
+/* Comment cards enhanced */
+.comment-card {
+  background: white;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 6px 25px rgba(0,0,0,0.12);
+  margin-bottom: 25px;
+  border: 2px solid #e5e7eb;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.comment-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background: linear-gradient(180deg, #4B0082, #FFD700);
+}
+
+.comment-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+}
+
+.comment-card p:first-child {
+  color: #4B0082;
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  border-bottom: 3px solid #f3f4f6;
+  padding-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.comment-card p:last-child {
+  color: #374151;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 0;
+  padding: 15px;
+  background: #f8fafc;
+  border-radius: 10px;
+  border-left: 4px solid #4B0082;
+}
+
+/* Floating animation for cards */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.home-details > p:nth-child(odd):hover {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Responsive enhancements */
+@media (max-width: 768px) {
+  .home-details {
+    padding: 20px;
+  }
+  
+  .home-details h2 {
+    font-size: 2.2rem;
+  }
+  
+  .home-details > div {
+    flex-direction: column;
+  }
+  
+  .home-details > div button {
+    width: 100%;
+    margin-bottom: 12px;
+  }
+  
+  .home-details form button[type="button"] {
+    margin-left: 0;
+    margin-top: 12px;
+    width: 100%;
+  }
+  
+  .home-details h3::before,
+  .home-details h3::after {
+    display: none;
+  }
+}
+
+/* Loading animation */
+@keyframes shimmer {
+  0% { background-position: -200px 0; }
+  100% { background-position: 200px 0; }
+}
+
+.home-details p:empty {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200px 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 8px;
+  min-height: 20px;
+}
+
+/* Custom scrollbar enhancements */
+.home-details textarea::-webkit-scrollbar {
+  width: 10px;
+}
+
+.home-details textarea::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 8px;
+}
+
+.home-details textarea::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #4B0082, #6A0DAD);
+  border-radius: 8px;
+}
+
+.home-details textarea::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #5A1A9C, #7B2CBF);
+}
+
+/* Glass morphism effect for cards */
+.comment-card, .home-details form, .comment-form {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+/* Pulse animation for important elements */
+@keyframes pulse-glow {
+  0% { box-shadow: 0 0 0 0 rgba(75, 0, 130, 0.4); }
+  70% { box-shadow: 0 0 0 15px rgba(75, 0, 130, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(75, 0, 130, 0); }
+}
+
+.book-btn:focus {
+  animation: pulse-glow 2s infinite;
+}

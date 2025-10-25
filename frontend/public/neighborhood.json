@@ -1,0 +1,23 @@
+{
+  "lat": 13.0827,
+  "lng": 80.2707,
+  "scores": {
+    "safety": 7,
+    "transport": 8,
+    "greenSpaces": 6
+  },
+  "amenities": [
+    {
+      "lat": 13.0829,
+      "lng": 80.2711,
+      "name": "Marina Beach",
+      "type": "Beach"
+    },
+    {
+      "lat": 13.0800,
+      "lng": 80.2735,
+      "name": "Metro Station",
+      "type": "Transport"
+    }
+  ]
+}
