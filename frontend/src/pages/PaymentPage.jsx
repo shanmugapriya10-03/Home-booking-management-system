@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import "./PaymentPage.css";
 
 export default function PaymentPage() {
   const { email } = useParams();
+  const navigate = useNavigate();
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -101,26 +103,24 @@ export default function PaymentPage() {
   };
 
   // ✅ Cash on Payment Handler
- const handleCashPayment = async (booking) => {
-  if (!window.confirm("Are you sure you want to request Cash Payment?")) return;
+  const handleCashPayment = async (booking) => {
+    if (!window.confirm("Are you sure you want to request Cash Payment?")) return;
 
-  try {
-    await axios.post("http://localhost:5000/payment/cash", { bookingId: booking.id });
+    try {
+      await axios.post("http://localhost:5000/payment/cash", { bookingId: booking.id });
 
-    // Optionally update UI
-    setBookings((prev) =>
-      prev.map((b) =>
-        b.id === booking.id ? { ...b, status: "pending-cash" } : b
-      )
-    );
+      setBookings((prev) =>
+        prev.map((b) =>
+          b.id === booking.id ? { ...b, status: "pending-cash" } : b
+        )
+      );
 
-    alert("💵 Seller has been notified about your cash payment request!");
-  } catch (err) {
-    console.error("Error requesting cash payment:", err);
-    alert("Failed to request cash payment.");
-  }
-};
-
+      alert("💵 Seller has been notified about your cash payment request!");
+    } catch (err) {
+      console.error("Error requesting cash payment:", err);
+      alert("Failed to request cash payment.");
+    }
+  };
 
   // ✅ Receipt printing
   const handleReceipt = (booking) => {
@@ -152,110 +152,92 @@ export default function PaymentPage() {
     win.print();
   };
 
-  if (loading)
-    return <div style={{ textAlign: "center", marginTop: "100px" }}>Loading bookings...</div>;
-
-  if (error)
-    return <div style={{ textAlign: "center", color: "red", marginTop: "100px" }}>{error}</div>;
+  if (loading) return <div className="loading-container">Loading bookings...</div>;
+  if (error) return <div className="error-container">{error}</div>;
 
   return (
-    <div style={{ padding: "30px", fontFamily: "Poppins, sans-serif" }}>
-      <h1 style={{ textAlign: "center", color: "#4B0082" }}>💳 Payment Page</h1>
-      {bookings.length === 0 ? (
-        <p style={{ textAlign: "center" }}>No bookings found.</p>
-      ) : (
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))",
-            gap: "25px",
-            marginTop: "30px",
-          }}
+    <div className="payment-page-container">
+      <div className="payment-header">
+        <h1 className="payment-title">💳 Payment Page</h1>
+        <button 
+          onClick={() => navigate(`/dashboard`)} 
+          className="dashboard-nav-button"
         >
+          🏠 Go to Dashboard
+        </button>
+      </div>
+
+      {bookings.length === 0 ? (
+        <div className="no-bookings-message">
+          <div className="no-bookings-icon">📦</div>
+          <p>No bookings found.</p>
+        </div>
+      ) : (
+        <div className="bookings-grid">
           {bookings.map((b) => (
-            <div
-              key={b.id}
-              style={{
-                background: "#fff",
-                padding: "20px",
-                borderRadius: "16px",
-                boxShadow: "0 8px 25px rgba(0,0,0,0.1)",
-              }}
-            >
-              {/* 🏡 Home Image */}
-              <img
-                src={b.imagePath || "/placeholder.jpg"}
-                alt={b.homeName}
-                style={{
-                  width: "100%",
-                  height: "180px",
-                  objectFit: "cover",
-                  borderRadius: "12px",
-                  marginBottom: "10px",
-                }}
-              />
-
-              <h3 style={{ color: "#333" }}>{b.homeName}</h3>
-              <p>📍 {b.city}, {b.state}</p>
-              <p>
-                💰{" "}
-                {b.bookingType === "buy"
-                  ? `₹${b.totalPrice}`
-                  : `₹${b.rentPerMonth} / month`}
-              </p>
-              <p>Status: <b>{b.status}</b></p>
-
-              {b.status === "approved" && (
-                <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-                  <button
-                    onClick={() => handlePayment(b)}
-                    style={{
-                      background: "#4B0082",
-                      color: "#fff",
-                      border: "none",
-                      borderRadius: "10px",
-                      padding: "12px",
-                      cursor: "pointer",
-                    }}
-                  >
-                    💳 Pay Online
-                  </button>
-
-                  <button
-                    onClick={() => handleCashPayment(b)}
-                    style={{
-                      background: "#10b981",
-                      color: "#fff",
-                      border: "none",
-                      borderRadius: "10px",
-                      padding: "12px",
-                      cursor: "pointer",
-                    }}
-                  >
-                    💵 Cash on Pay
-                  </button>
+            <div key={b.id} className="booking-card">
+              <div className="booking-image-container">
+                <img
+                  src={b.imagePath || "/placeholder.jpg"}
+                  alt={b.homeName}
+                  className="booking-image"
+                />
+                <div className={`status-badge status-${b.status}`}>
+                  {b.status}
                 </div>
-              )}
+              </div>
 
-              {b.status === "paid" && (
-                <button
-                  onClick={() => handleReceipt(b)}
-                  style={{
-                    width: "100%",
-                    padding: "12px",
-                    backgroundColor: "#059669",
-                    color: "white",
-                    border: "none",
-                    borderRadius: "10px",
-                    fontSize: "1rem",
-                    fontWeight: "600",
-                    cursor: "pointer",
-                    transition: "all 0.3s ease",
-                  }}
-                >
-                  📄 Download Receipt
-                </button>
-              )}
+              <div className="booking-content">
+                <h3 className="booking-title">{b.homeName}</h3>
+                <p className="booking-location">📍 {b.city}, {b.state}</p>
+                <p className="booking-price">
+                  💰{" "}
+                  {b.bookingType === "buy"
+                    ? `₹${b.totalPrice}`
+                    : `₹${b.rentPerMonth} / month`}
+                </p>
+                <p className="booking-type">
+                  <span className="type-label">Type:</span> 
+                  <span className={`type-value type-${b.bookingType}`}>
+                    {b.bookingType === "buy" ? "Purchase" : "Rent"}
+                  </span>
+                </p>
+              </div>
+
+              <div className="booking-actions">
+                {b.status === "approved" && (
+                  <>
+                    <button
+                      onClick={() => handlePayment(b)}
+                      className="payment-btn online-payment-btn"
+                    >
+                      💳 Pay Online
+                    </button>
+
+                    <button
+                      onClick={() => handleCashPayment(b)}
+                      className="payment-btn cash-payment-btn"
+                    >
+                      💵 Cash Payment
+                    </button>
+                  </>
+                )}
+
+                {b.status === "paid" && (
+                  <button
+                    onClick={() => handleReceipt(b)}
+                    className="payment-btn receipt-btn"
+                  >
+                    📄 Download Receipt
+                  </button>
+                )}
+
+                {b.status === "pending-cash" && (
+                  <div className="pending-cash-notice">
+                    ⏳ Cash payment request sent to seller
+                  </div>
+                )}
+              </div>
             </div>
           ))}
         </div>

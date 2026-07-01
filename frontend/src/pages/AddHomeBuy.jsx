@@ -68,7 +68,7 @@ export default function AddHomeBuy() {
 
       if (res.ok) {
         alert("🏡 Home for Sale added successfully!");
-        navigate("/");
+        navigate("/dashboard");
       } else {
         const errText = await res.text();
         alert("Failed to add home: " + errText);

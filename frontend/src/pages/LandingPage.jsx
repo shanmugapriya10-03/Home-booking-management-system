@@ -4,7 +4,7 @@ export default function HomeBookingLanding() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleGetStarted = () => {
-    window.location.href = '/';
+    window.location.href = '/dashboard';
   };
 
   const scrollToSection = (id) => {
@@ -538,7 +538,7 @@ export default function HomeBookingLanding() {
             Buy, Sell, or Rent Properties with Ease
           </h2>
           <p className="fade-in-up-delay-2" style={styles.heroDescription}>
-            The ultimate platform for all your real estate needs. List your property, find your perfect home, or discover rental opportunities - all in one place. We support flexible payment options including both online and offline methods to suit your convenience.
+            The ultimate platform for all your real estate needs. List your property, find your perfect home, or discover rental opportunities - all in one place. We support flexible payment options.
           </p>
           <div className="fade-in-up-delay-3" style={styles.ctaContainer}>
             <button onClick={handleGetStarted} style={styles.btnPrimary} className="btn-primary">

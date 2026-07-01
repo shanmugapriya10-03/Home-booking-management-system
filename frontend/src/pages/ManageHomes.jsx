@@ -61,7 +61,15 @@ export default function ManageHomes() {
 
   return (
     <div className="manage-homes-container">
-      <h1 className="manage-homes-header">Manage My Homes</h1>
+      <div className="header-section">
+        <h1 className="manage-homes-header">Manage My Homes</h1>
+        <button 
+          onClick={() => navigate(`/dashboard`)} 
+          className="dashboard-button"
+        >
+          ← Go to Dashboard
+        </button>
+      </div>
 
       {homes.length === 0 ? (
         <div className="no-homes-message">

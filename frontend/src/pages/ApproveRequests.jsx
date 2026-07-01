@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import "./SellerDashboard.css";
 
 export default function ApproveRequests() {
   const { email } = useParams(); // Seller/admin email
+  const navigate = useNavigate();
   const [requests, setRequests] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -65,7 +66,15 @@ export default function ApproveRequests() {
 
   return (
     <div className="approve-requests-container">
-      <h1 className="approve-requests-header">Pending Booking Requests</h1>
+      <div className="header-section">
+        <h1 className="approve-requests-header">Pending Booking Requests</h1>
+        <button 
+          onClick={() => navigate(`/dashboard`)} 
+          className="dashboard-button"
+        >
+          🏠 Go to Dashboard
+        </button>
+      </div>
 
       {requests.length === 0 ? (
         <div className="no-requests-message">

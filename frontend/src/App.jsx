@@ -37,14 +37,14 @@ function App() {
         {/* Public Routes */}
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/" element={<HomePage />} />
+        <Route path="/dashboard" element={<HomePage />} />
         <Route path="/host-signup" element={<HostSignup />} />
         <Route path="/homes" element={<AddHome />} />
         <Route path="/home/:id" element={<HomeDetails />} />
         <Route path="/chat" element={<Chatbot />} />
         <Route path="/home-designer" element={<HomeDesigner />} />
         <Route path="/home/:id/neighborhood-experience" element={<NeighborhoodExperience />} />
-        <Route path="/landing" element={<LandingPage />} />
+        <Route path="/" element={<LandingPage />} />
 
         {/* User Routes */}
         <Route path="/user-dashboard/:email" element={<UserDashboard />} />

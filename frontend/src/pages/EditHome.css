@@ -1,61 +1,173 @@
 .edit-home-container {
-  max-width: 600px;
-  margin: 40px auto;
-  padding: 20px;
-  background: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5_PJuL4SAXf6rSj6aVX4ThAnBDJhZ3pkWoQ&s');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.edit-home-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.edit-home-container > * {
+  position: relative;
+  z-index: 2;
 }
 
 .edit-home-container h1 {
+  color: #ffffff;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  font-weight: 700;
   text-align: center;
-  font-size: 26px;
-  font-weight: bold;
-  margin-bottom: 20px;
-  color: #333;
 }
 
 .edit-home-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px; /* spacing between fields */
-}
-
-.edit-home-form input,
-.edit-home-form textarea {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  max-width: 700px;
   width: 100%;
-  padding: 10px 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
   box-sizing: border-box;
 }
 
-.edit-home-form textarea {
-  min-height: 80px;
-  resize: vertical;
+.edit-home-form input,
+.edit-home-form textarea,
+.edit-home-form select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  background: #ffffff;
+  box-sizing: border-box;
+}
+
+/* Full width elements */
+.edit-home-form input[name="homeName"],
+.edit-home-form textarea[name="description"],
+.edit-home-form input[name="address"],
+.edit-home-form input[name="images"],
+.edit-home-form input[name="sellerEmail"],
+.edit-home-form button {
+  grid-column: 1 / -1;
 }
 
 .edit-home-form input:focus,
-.edit-home-form textarea:focus {
+.edit-home-form textarea:focus,
+.edit-home-form select:focus {
   outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 4px rgba(0, 123, 255, 0.2);
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+.edit-home-form textarea {
+  min-height: 120px;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.edit-home-form select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
 }
 
 .edit-home-form button {
-  background-color: #007bff;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
-  padding: 12px;
-  font-size: 16px;
-  font-weight: bold;
   border: none;
-  border-radius: 4px;
+  padding: 14px 28px;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
 }
 
 .edit-home-form button:hover {
-  background-color: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+.edit-home-form button:active {
+  transform: translateY(0);
+}
+
+.edit-home-form input::placeholder,
+.edit-home-form textarea::placeholder {
+  color: #999;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .edit-home-container {
+    padding: 20px 15px;
+  }
+
+  .edit-home-container h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+
+  .edit-home-form {
+    padding: 25px;
+    grid-template-columns: 1fr;
+  }
+
+  .edit-home-form input,
+  .edit-home-form textarea,
+  .edit-home-form select {
+    padding: 10px 14px;
+    font-size: 15px;
+  }
+
+  /* All elements full width on mobile */
+  .edit-home-form input,
+  .edit-home-form textarea,
+  .edit-home-form select {
+    grid-column: 1;
+  }
+
+  .edit-home-form button {
+    padding: 12px 24px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .edit-home-form {
+    padding: 20px;
+  }
+
+  .edit-home-container h1 {
+    font-size: 1.75rem;
+  }
 }

@@ -37,7 +37,7 @@ const Signup = () => {
         localStorage.setItem("token", response.data.token);
 
         if (response.data.user.role === "host") navigate("/homes");
-        else navigate("/");
+        else navigate("/dashboard");
       }
     } catch (err) {
       setMessage(err.response?.data?.message || "Signup failed. Please try again.");
@@ -64,7 +64,7 @@ const Signup = () => {
         localStorage.setItem("token", response.data.token);
 
         if (response.data.user.role === "host") navigate("/");
-        else navigate("/");
+        else navigate("/dashboard");
       }
     } catch (err) {
       console.error(err);
@@ -133,7 +133,7 @@ const Signup = () => {
             Role:
             <select value={role} onChange={(e) => setRole(e.target.value)}>
               <option value="user">User</option>
-              <option value="host">Host</option>
+              
             </select>
           </label>
 

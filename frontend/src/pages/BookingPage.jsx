@@ -104,7 +104,7 @@ export default function BookingPage() {
       const bookingData = await bookingRes.json();
       if (bookingData.success) {
         alert("Booking request sent!");
-        navigate("/");
+        navigate("/dashboard");
       } else {
         alert("Booking failed: " + bookingData.message);
       }
@@ -148,7 +148,7 @@ export default function BookingPage() {
           </div>
         )}
 
-        <label>Phone (optional)</label>
+        <label>Phone</label>
         <input
           type="tel"
           value={phone}

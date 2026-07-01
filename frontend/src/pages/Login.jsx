@@ -38,7 +38,7 @@ const Login = () => {
         } else if (response.data.user.role === "host") {
           navigate("/homes");
         } else {
-          navigate("/");
+          navigate("/dashboard");
         }
       }
     } catch (err) {
@@ -71,7 +71,7 @@ const Login = () => {
         } else if (response.data.user.role === "host") {
           navigate("/homes");
         } else {
-          navigate("/");
+          navigate("/dashboard");
         }
       }
     } catch (err) {
